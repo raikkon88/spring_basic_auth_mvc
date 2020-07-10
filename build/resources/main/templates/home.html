@@ -1,10 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html  lang="en" xmlns="http://www.w3.org/1999/xhtml"
+       xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
-    <title>BCDS Home Page</title>
+    <title>BCDS home page</title>
+    <th:block th:include="head/general.html :: GeneralHeader"></th:block>
 </head>
 <body>
-    <h1>Home Page</h1>
+    <div class="container-fluid">
+        <div th:include="structure/header.html :: PublicHeader"></div>
+        <h1>Home Page</h1>
+    </div>
 </body>
 </html>

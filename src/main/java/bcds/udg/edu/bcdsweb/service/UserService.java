@@ -25,10 +25,6 @@ public class UserService {
         return userRepository.findByEmail(email);
     }
 
-    public User findUserByUserName(String userName) {
-        return userRepository.findByUserName(userName);
-    }
-
     public User saveUser(User user) {
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setActive(true);

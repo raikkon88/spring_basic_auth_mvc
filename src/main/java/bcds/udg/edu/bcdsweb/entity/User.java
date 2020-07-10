@@ -20,16 +20,12 @@ public class User {
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
     private int id;
-    @Column(name = "user_name")
-    private String userName;
     @Column(name = "email")
     private String email;
     @Column(name = "password")
     private String password;
     @Column(name = "name")
     private String name;
-    @Column(name = "last_name")
-    private String lastName;
     @Column(name = "active")
     private Boolean active;
     @ManyToMany(cascade = CascadeType.MERGE)
@@ -42,14 +38,6 @@ public class User {
 
     public void setId(int id) {
         this.id = id;
-    }
-
-    public String getUserName() {
-        return userName;
-    }
-
-    public void setUserName(String userName) {
-        this.userName = userName;
     }
 
     public String getEmail() {
@@ -74,14 +62,6 @@ public class User {
 
     public void setName(String name) {
         this.name = name;
-    }
-
-    public String getLastName() {
-        return lastName;
-    }
-
-    public void setLastName(String lastName) {
-        this.lastName = lastName;
     }
 
     public Boolean getActive() {

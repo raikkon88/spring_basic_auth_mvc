@@ -25,16 +25,14 @@ public class InitService {
     @Autowired
     private PasswordEncoder passwordEncoder;
 
-    @Value("${bcds.admin.username}")
-    private String adminUsername;
-    @Value("${bcds.admin.username}")
+    @Value("${bcds.admin.password}")
     private String adminPassword;
     @Value("${bcds.admin.email}")
     private String adminEmail;
 
     @EventListener(ApplicationReadyEvent.class)
     public void init(){
-        User adminUser = userService.findUserByUserName("admin");
+        User adminUser = userService.findUserByEmail(adminEmail);
         if(adminUser == null) {
             // Find and assign the admin database role.
             Set<Role> roles = new HashSet<>();
@@ -44,18 +42,14 @@ public class InitService {
             User newAdmin = new User();
 
             System.out.println(adminEmail);
-            System.out.println(adminUsername);
             System.out.println(adminPassword);
 
             newAdmin.setEmail(adminEmail);
-            newAdmin.setUserName(adminUsername);
             newAdmin.setPassword(adminPassword);
-            newAdmin.setLastName("admin");
             newAdmin.setName("admin");
             newAdmin.setActive(true);
             newAdmin.setRoles(roles);
             userService.saveUser(newAdmin);
         }
     }
-
 }
